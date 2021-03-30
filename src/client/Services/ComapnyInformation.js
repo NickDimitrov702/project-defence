@@ -3,7 +3,7 @@
 
 const url = 'http://localhost:5000/companies'
 const APIkey = 'AIzaSyA2MRdhcQ-6ex98ZO6Bn1AWmTFNoEjrwII'
-const signeInUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${APIkey}`
+const signeInUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${APIkey}`
 
 export const getAllInformation = () => {
 
@@ -19,8 +19,8 @@ export const getGames = () => {
 }
 
 
-export const signeIn = () => {
-    return fetch(signeInUrl, {method: 'POST'})
-    .then(res => res.json())
-    .catch(error => console.error(`${error}`))
-}
+// export const signeIn = () => {
+//     return fetch(signeInUrl, {method: 'POST'})
+//     .then(res => res.json())
+//     .catch(error => console.error(`${error}`))
+// }

@@ -1,33 +1,50 @@
 import style from '../LogIn/Login.style.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import * as SigneInservice from '../../../Services/ComapnyInformation'
 
 
 function SigneIn() {
-    
-    useEffect(() => {
-        // POST request using fetch inside useEffect React hook
-        const requestOptions = {
+
+    const [username, setUsername] = useState('Username')
+    const APIkey = 'AIzaSyA2MRdhcQ-6ex98ZO6Bn1AWmTFNoEjrwII'
+    const signeInUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${APIkey}`
+
+    const onLoginSubmit = (e) => {
+        e.preventDefault();
+        let email = (e.target.email.value)
+        let password = (e.target.password.value)
+
+        fetch(signeInUrl, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: 'React Hooks POST Request Example' })
-        };
-        fetch('https://jsonplaceholder.typicode.com/posts', requestOptions)
-            .then(response => response.json())
-            .then(data => console.log(data.id));
-    
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
-    }, []);
-    
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+        })
+        .then(res => res.json())
+        .catch(error => console.error(`${error}`))
+
+    }
 
 
-    return(
-        <div className="signe-in-for-wrapper">
-            <label className="lable-item">Enter email</label>
-            <input type="text" className="email input-items" placeholder="Enter email"></input>
-            <label className="lable-item">Enter password</label>
-            <input type="password" className="password input-items" placeholder="Enter password"></input>
-            <button className="submit-button">Submit</button>
+    const onUserNameChangeHandler = (e) => {
+        setUsername(e.target.value)
+    }
+
+
+    return (
+        <div>
+            <form className="signe-in-for-wrapper" onSubmit={onLoginSubmit}>
+                <label className="lable-item">Enter email</label>
+                <input type="text" id="email" name={username} onChange={onUserNameChangeHandler} className="email input-items" placeholder="Enter email"></input>
+                <label className="lable-item">Enter password</label>
+                <input type="password" id="password" className="password input-items" placeholder="Enter password"></input>
+                <button className="submit-button">Submit</button>
+            </form>
+
         </div>
     )
 }
