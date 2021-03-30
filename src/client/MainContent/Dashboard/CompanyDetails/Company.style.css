@@ -1,0 +1,46 @@
+
+.comapny-wrapper {
+    display: flex;
+    flex-direction: row;
+    /* width: auto; */
+    max-width: 1600px;
+    height: auto;
+    border: 1px solid black;
+    flex-wrap: nowrap;
+    margin: auto;
+   align-content: center;
+    
+}
+
+.comapnies {
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+    /* border: 1px solid black; */
+    width: 300px;
+    max-width: 310px;
+    max-height: 400px;
+    margin: 0 auto;
+    align-items: center;
+    
+   
+    
+}
+
+.comapnies:hover {
+    /* background-color: rgba(255, 255, 0, 0.678); */
+    box-shadow: 2px 3px 20px 1px #000000;
+    transition: 1s;
+}
+
+.games-list-items {
+    display: flex;
+    max-width: 300px;
+    min-height: 600px;
+    align-content: center;
+}
+
+
+/* .company-logo-wrapper {
+    text-align: center;
+} */

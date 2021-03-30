@@ -1,0 +1,10 @@
+.main-content {
+    display: flex;
+    max-width: 1400px;
+    background-color: rgb(72, 23, 117);
+    flex-direction: row;
+    max-height: 1400px;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
